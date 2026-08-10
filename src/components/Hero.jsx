@@ -15,6 +15,12 @@ import dslr from "../assets/dslr.jpg";
 // Import Icons
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+const slides = [
+  { image: headset, title: "HEADSET" },
+  { image: earbuds, title: "EARBUDS" },
+  { image: dslr, title: "DSLR" },
+];
+
 function Hero() {
   const sliderRef = useRef(null);
 
@@ -50,7 +56,7 @@ function Hero() {
   return (
     <div id="hero" className="w-full h-[600px] overflow-hidden relative">
       <Slider {...settings} ref={sliderRef} className="w-full h-full">
-        {[headset, earbuds, dslr].map((image, index) => (
+        {slides.map(({ image, title }, index) => (
           <div key={index} className="relative w-full h-[600px]">
             {/* Background Image */}
             <div
@@ -74,7 +80,7 @@ function Hero() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="text-6xl font-extrabold tracking-wide"
               >
-                {image.split("/")[3].split(".")[0].toUpperCase()}
+                {title}
               </motion.h1>
 
               <motion.p
